@@ -42,13 +42,18 @@ function head(dyn, C, rx, ry, skin, hair, seed, o = {}) {
     const p1 = [C[0] + Math.cos(a1) * rx * .95, C[1] + Math.sin(a1) * ry * .95];
     stroke(dyn, p0, p1, ry * .62, skin, skin, seed + i, { hgt: 1.2, type: i % 3 === 0 ? DAB : KNIFE });
   }
-  // hair mass: the back of the head, hairline lower on the neck
+  // hair: covers the crown and falls to the nape, leaving the neck and a little temple skin
   for (let i = 0; i < 7; i++) {
-    const k = i / 6, a = Math.PI * (0.08 + 0.84 * k);
-    const p0 = [C[0] + Math.cos(a) * rx * .2, C[1] - ry * .55];
-    const p1 = [C[0] + Math.cos(a) * rx * 1.02, C[1] + ry * .18];
-    stroke(dyn, p0, p1, ry * .42, hair, [hair[0] * 1.25, hair[1] * 1.25, hair[2] * 1.3], seed + 40 + i, { hgt: 1.35 });
+    const k = i / 6, a = Math.PI * (0.06 + 0.88 * k);
+    const p0 = [C[0] + Math.cos(a) * rx * .55, C[1] - ry * .78];
+    const p1 = [C[0] + Math.cos(a) * rx * 1.0, C[1] + ry * .08];
+    stroke(dyn, p0, p1, ry * .34, hair, [hair[0] * 1.22, hair[1] * 1.22, hair[2] * 1.26], seed + 40 + i, { hgt: 1.35 });
   }
+  // the crown, one wide stroke across the top so no scalp shows through
+  stroke(dyn, [C[0] - rx * .8, C[1] - ry * .55], [C[0] + rx * .8, C[1] - ry * .55], ry * .5, hair, hair, seed + 48, { hgt: 1.4, over: 1.02 });
+  // the nape: a short darker line where the hair ends
+  stroke(dyn, [C[0] - rx * .55, C[1] + ry * .12], [C[0] + rx * .55, C[1] + ry * .12], ry * .16,
+    [hair[0] * .7, hair[1] * .7, hair[2] * .72], hair, seed + 49, { hgt: 1.1 });
   if (o.face) {
     const ey = C[1] - ry * .05, ex = rx * .42, open = o.eyes ?? 1;
     for (const s of [-1, 1]) {
@@ -117,7 +122,7 @@ export function figure(dyn, o) {
   }
 
   // ---- coat / torso: a tapered mass, then its lit edge
-  const wS = 24 * s, wH = 34 * s;
+  const wS = 26 * s, wH = 36 * s;
   for (let i = 0; i < 7; i++) {
     const k = (i + .5) / 7;
     const A = mix2([shoulder[0] - wS, shoulder[1]], [shoulder[0] + wS, shoulder[1]], k);
@@ -133,8 +138,9 @@ export function figure(dyn, o) {
     const a1 = (side < 0 ? p.armL1 : p.armR1) ?? side * .12;
     const a2 = (side < 0 ? p.armL2 : p.armR2) ?? side * .2;
     const S = [shoulder[0] + side * wS * .9, shoulder[1] + 6 * s];
-    const E = add(S, Math.PI - (side * 1.05 + a1), 46 * s);
-    const Hnd = add(E, Math.PI - (side * 1.05 + a2), 42 * s);
+    // arms hang from the shoulder: angle 0 = straight down, + = outward from the body
+    const E = add(S, side * .16 + a1, 46 * s);
+    const Hnd = add(E, side * .16 + a2, 42 * s);
     limb(dyn, S, E, 14 * s, coat, sd + 200 + (side > 0 ? 10 : 0), { n: 3 });
     limb(dyn, E, Hnd, 12 * s, [coat[0] * .9, coat[1] * .9, coat[2] * .92], sd + 220 + (side > 0 ? 10 : 0), { n: 3 });
     stroke(dyn, Hnd, [Hnd[0], Hnd[1] + 7 * s], 10 * s, skin, skin, sd + 240 + side, { type: DAB, hgt: 1.15 });
@@ -147,7 +153,7 @@ export function figure(dyn, o) {
 
   // ---- neck + head
   limb(dyn, neck, C, 12 * s, skin, sd + 400, { n: 2 });
-  head(dyn, C, 15 * s, 18 * s, skin, hair, sd + 500, { face: o.face, eyes: o.eyes });
+  head(dyn, C, 17 * s, 21 * s, skin, hair, sd + 500, { face: o.face, eyes: o.eyes });
   return { hip, shoulder, neck, head: C };
 }
 
@@ -163,6 +169,6 @@ export function walkPose(ph, amp = 1, armAmp = .8) {
   };
 }
 // ---- sitting: knees bent, hands on knees (or one holding the cup)
-export const SIT = { thighL: .55, kneeL: -1.45, thighR: .5, kneeR: -1.4, armL1: .5, armL2: .8, armR1: .42, armR2: .72, hipDrop: 62, lean: .08, cup: true };
+export const SIT = { thighL: .55, kneeL: -1.45, thighR: .5, kneeR: -1.4, armL1: .42, armL2: .62, armR1: .36, armR2: .5, hipDrop: 62, lean: .08, cup: true };
 // ---- standing still, weight on one leg, one hand at the side
 export const STAND = { thighL: .04, kneeL: .03, thighR: -.03, kneeR: .02, armL1: .06, armL2: .08, armR1: .05, armR2: .1, cup: true };

@@ -157,3 +157,89 @@ export function wipe(dyn, t, t0, dur, o = {}) {
 // ---------------------------------------------------------------- small life
 // lamp flicker: returns a 0..1 multiplier that never quite settles
 export const flicker = (t, seed = 1) => .9 + .1 * (hash(Math.floor(t * 9 + seed)) * .6 + Math.sin(t * 7.3 + seed) * .4);
+
+// ---------------------------------------------------------------- clouds
+// slow knife bands drifting sideways; they never repeat within the shot
+export function clouds(dyn, t, o = {}) {
+  const n = o.n ?? 9, y0 = o.y0 ?? 120, y1 = o.y1 ?? 380, sp = o.speed ?? 12;
+  const col = o.col ?? [.44, .48, .54], lit = o.lit ?? [.62, .6, .58];
+  for (let i = 0; i < n; i++) {
+    const h1 = hash(i * 3.9 + 1), h2 = hash(i * 7.1 + 4), h3 = hash(i * 2.3 + 8);
+    const y = lerp(y0, y1, h2) + Math.sin(t * .18 + i) * 6;
+    const x = ((h1 * 2600 + t * sp * (.6 + h3)) % 2600) - 340;
+    const len = 420 + h3 * 520, wid = 60 + h2 * 90;
+    push(dyn, { x, y, ang: -.02 + (h3 - .5) * .03, len, wid, c: col, c2: lit, seed: i * 21, type: KNIFE, alpha: .5, hgt: .5, bend: .06 });
+  }
+}
+
+// ---------------------------------------------------------------- wet-ground shimmer
+// horizontal dabs that flicker like a reflection breaking up in the rain
+export function shimmer(dyn, t, o = {}) {
+  const n = o.n ?? 60, x0 = o.x0 ?? 0, x1 = o.x1 ?? 2100, y0 = o.y0 ?? 620, y1 = o.y1 ?? 1180;
+  const col = o.col ?? [.9, .92, .92], a0 = o.alpha ?? .3;
+  for (let i = 0; i < n; i++) {
+    const h1 = hash(i * 4.3 + 2), h2 = hash(i * 8.9 + 6), h3 = hash(i * 1.7 + 12);
+    const x = lerp(x0, x1, h1), y = lerp(y0, y1, h2);
+    const flick = Math.pow(Math.max(0, Math.sin(t * (1.1 + h3 * 2.6) + i * 1.7)), 3);
+    if (flick < .05) continue;
+    push(dyn, { x: x + Math.sin(t * .8 + i) * 8, y, ang: 0, len: 26 + h3 * 54, wid: 3.4 + h1 * 3,
+      c: col, c2: [col[0] * .8, col[1] * .82, col[2] * .84], seed: i * 33, type: 3, alpha: a0 * flick, hgt: .3 });
+  }
+}
+
+// ---------------------------------------------------------------- rain on the umbrella
+// beads landing on a canopy seen from above: a dab, then a quick ring running down the slope
+export function canopyDrops(dyn, t, o = {}) {
+  const cx = o.cx ?? 960, cy = o.cy ?? 620, rx = o.rx ?? 620, ry = o.ry ?? 560, n = o.n ?? 26;
+  for (let i = 0; i < n; i++) {
+    const h1 = hash(i * 6.7 + 3), h2 = hash(i * 3.3 + 9), h3 = hash(i * 8.1 + 5);
+    const period = .55 + h2 * .9;
+    const ph = ((t + h1 * period) % period) / period;
+    const a = h1 * Math.PI * 2, r = .12 + h3 * .82;
+    const x = cx + Math.cos(a) * rx * r, y = cy + Math.sin(a) * ry * r;
+    // the bead
+    const pop = Math.min(1, ph * 6) * (1 - Math.max(0, (ph - .45) / .55));
+    push(dyn, { x, y, ang: 0, len: (9 + h2 * 7) * (.6 + pop * .6), wid: (8 + h2 * 6) * (.6 + pop * .6),
+      c: [1, .95, .93], c2: [.86, .78, .78], seed: i * 41, type: DAB, alpha: .55 * pop, hgt: 1.1 });
+    // a thin ring running outward down the slope
+    const rr = ph * 46;
+    for (let k = 0; k < 5; k++) {
+      const a0 = a + k / 5 * .5, a1 = a + (k + 1) / 5 * .5;
+      push(dyn, { x: x + Math.cos(a0) * rr, y: y + Math.sin(a0) * rr * .9, ang: a0 + Math.PI / 2,
+        len: rr * .7, wid: 1.8, c: [1, .9, .88], c2: [.9, .8, .8], seed: i * 43 + k, type: 3, alpha: .3 * (1 - ph), hgt: .3 });
+    }
+  }
+}
+
+// ---------------------------------------------------------------- dust in a shaft of light
+export function motes(dyn, t, o = {}) {
+  const n = o.n ?? 22, x0 = o.x0 ?? 700, x1 = o.x1 ?? 1240, y0 = o.y0 ?? 160, y1 = o.y1 ?? 960;
+  for (let i = 0; i < n; i++) {
+    const h1 = hash(i * 3.7 + 5), h2 = hash(i * 6.9 + 2), h3 = hash(i * 2.1 + 11);
+    const x = lerp(x0, x1, h1) + Math.sin(t * (.3 + h3 * .5) + i) * 16 + ((t * (3 + h3 * 6)) % 60) - 30;
+    const y = lerp(y0, y1, h2) - ((t * (4 + h1 * 8)) % 110);
+    push(dyn, { x, y, ang: .4, len: 3 + h1 * 5, wid: 2 + h2 * 3, c: [1, .95, .84], c2: [.9, .84, .72],
+      seed: i * 13, type: DAB, alpha: .34 * (.55 + .45 * Math.sin(t * 1.4 + i)), hgt: .6 });
+  }
+}
+
+// ---------------------------------------------------------------- an umbrella seen from above
+export function umbrellaTop(dyn, t, o = {}) {
+  const x = o.x ?? 900, y = o.y ?? 600, r = o.r ?? 90, col = o.col ?? [.72, .22, .17], sd = o.seed ?? 1;
+  // the canopy: one big dab, slightly darker in the middle
+  push(dyn, { x, y, ang: 0, len: r * 2.05, wid: r * 1.95, c: col, c2: [col[0] * .82, col[1] * .82, col[2] * .84], seed: sd, type: DAB, alpha: 1, hgt: 1.5 });
+  // ribs
+  for (let i = 0; i < 6; i++) {
+    const a = i / 6 * Math.PI * 2 + (o.spin ?? 0);
+    push(dyn, { x, y, ang: a, len: r * 1.9, wid: 2.6, c: [col[0] * .62, col[1] * .62, col[2] * .64], c2: col, seed: sd + 7 + i, type: 3, alpha: .75, hgt: .5 });
+  }
+  // the rim, catching the sky
+  for (let i = 0; i < 10; i++) {
+    const a0 = i / 10 * Math.PI * 2, a1 = (i + 1) / 10 * Math.PI * 2;
+    push(dyn, { x: x + Math.cos((a0 + a1) / 2) * r, y: y + Math.sin((a0 + a1) / 2) * r,
+      ang: (a0 + a1) / 2 + Math.PI / 2, len: r * .55, wid: 3.4,
+      c: [Math.min(1, col[0] * 1.55), Math.min(1, col[1] * 1.5), Math.min(1, col[2] * 1.45)], c2: col, seed: sd + 20 + i, type: 3, alpha: .55, hgt: .6 });
+  }
+  // the tip
+  push(dyn, { x, y, ang: 0, len: r * .28, wid: r * .26, c: [Math.min(1, col[0] * 1.2), col[1] * .9, col[2] * .9], c2: col, seed: sd + 40, type: DAB, alpha: .9, hgt: 1.3 });
+}

@@ -45,7 +45,8 @@
 ```bash
 sudo apt-get install -y ffmpeg fonts-noto-cjk
 
-cd /workspaces
+# 注意：渲染库要克隆在仓库里面（和 mv-yushi 同级），下面的 ../mv-yushi 才指得到
+cd /workspaces/<你的仓库名>
 git clone --depth 1 https://github.com/lemomo-ai/lemo-opuscar.git
 cd lemo-opuscar && sh plugin/skills/lemo-opuscar/scripts/setup.sh deps
 

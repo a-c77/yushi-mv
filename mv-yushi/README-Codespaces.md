@@ -24,8 +24,8 @@ mv-yushi/
 sudo apt-get update
 sudo apt-get install -y ffmpeg fonts-noto-cjk
 
-# 2. 拿渲染库（和影片文件夹放在同一层）
-cd /workspaces
+# 2. 拿渲染库：克隆在仓库里面，和 mv-yushi 同级（../mv-yushi 才指得到）
+cd /workspaces/<你的仓库名>
 git clone --depth 1 https://github.com/lemomo-ai/lemo-opuscar.git
 cd lemo-opuscar
 sh plugin/skills/lemo-opuscar/scripts/setup.sh deps      # node 包 + headless chromium + python venv
@@ -37,7 +37,7 @@ sh plugin/skills/lemo-opuscar/scripts/setup.sh deps      # node 包 + headless c
 ## 二、先看一帧（10 秒，确认环境没问题）
 
 ```bash
-cd /workspaces/lemo-opuscar
+cd /workspaces/<你的仓库名>/lemo-opuscar
 node core/render/still.mjs ../mv-yushi 30 --out ../mv-yushi/stills
 # → mv-yushi/stills/t_30.jpg  （第 30 秒：他坐在床边，字幕在下方）
 node core/render/still.mjs ../mv-yushi 95 120 --out ../mv-yushi/stills   # 彩色广场 / 双镜
@@ -46,7 +46,7 @@ node core/render/still.mjs ../mv-yushi 95 120 --out ../mv-yushi/stills   # 彩�
 如果在 Codespaces 里想直接看画面，起个静态服务并转发端口：
 
 ```bash
-cd /workspaces/lemo-opuscar
+cd /workspaces/<你的仓库名>/lemo-opuscar
 python3 -m http.server 8000           # 端口面板里把 8000 设为 Public，然后打开
 # http://localhost:8000/@film/index.html?t=30   ← 拖动 t 看任意时刻
 ```
@@ -56,7 +56,7 @@ python3 -m http.server 8000           # 端口面板里把 8000 设为 Public，
 ## 三、出整片
 
 ```bash
-cd /workspaces/lemo-opuscar
+cd /workspaces/<你的仓库名>/lemo-opuscar
 sh ../mv-yushi/build.sh
 ```
 

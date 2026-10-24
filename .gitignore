@@ -1,0 +1,20 @@
+# 渲染库（由 .devcontainer 自动克隆，不进仓库）
+lemo-opuscar/
+
+# 依赖
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+
+# 渲染产物（大文件，不进仓库）
+mv-yushi/out/
+mv-yushi/stills/
+mv-yushi/review/
+*.mp4
+*.wav
+
+# 工具与系统
+.workbuddy/
+.DS_Store
+*.log

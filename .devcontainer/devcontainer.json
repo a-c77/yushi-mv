@@ -1,0 +1,14 @@
+{
+  "name": "于是 MV · 油画厚涂",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y ffmpeg fonts-noto-cjk && (test -d lemo-opuscar || git clone --depth 1 https://github.com/lemomo-ai/lemo-opuscar.git) && cd lemo-opuscar && sh plugin/skills/lemo-opuscar/scripts/setup.sh deps",
+  "hostRequirements": { "cpus": 4, "memory": "8gb", "storage": "32gb" },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+  "remoteUser": "node"
+}

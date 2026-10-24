@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>《于是》MV — 分镜故事板（早期 look test）</title>
+<style>
+:root{--paper:#faf7f2;--paper2:#f2ece1;--ink:#1f1c18;--ink2:#5b5348;--line:#e0d6c6;--accent:#b4472c;--gold:#a8802f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","Source Han Serif SC","Noto Serif SC",Georgia,serif;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:54px 34px 88px}
+.eyebrow{font:600 12px/1.4 ui-sans-serif,system-ui;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+h1{font-size:38px;line-height:1.25;margin:14px 0 8px}
+h1 small{display:block;font-size:15px;font-weight:400;color:var(--ink2);margin-top:12px;letter-spacing:.04em}
+.rule{height:1px;background:var(--line);margin:30px 0}
+h2{font-size:21px;margin:0 0 14px;letter-spacing:.02em}
+h2 .n{color:var(--accent);font-size:14px;margin-right:10px;font-family:ui-sans-serif,system-ui}
+.lede{font-size:16px;color:var(--ink2);max-width:74ch}
+.lede b{color:var(--ink)}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:8px}
+.shot{border:1px solid var(--line);background:#fff;overflow:hidden}
+.shot img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#111}
+.shot .cap{padding:14px 18px 16px}
+.shot .row{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.no{font:700 13px/1 ui-sans-serif,system-ui;background:var(--ink);color:#fff;padding:4px 8px;border-radius:2px}
+.tc{font:600 13px/1 ui-sans-serif,system-ui;color:var(--accent);letter-spacing:.06em}
+.framing{font:500 12px/1 ui-sans-serif,system-ui;color:var(--ink2);margin-left:auto;letter-spacing:.04em}
+.lyric{margin:10px 0 6px;font-size:14px;color:var(--accent)}
+.lyric span{color:var(--ink2);font-size:12px;font-family:ui-sans-serif,system-ui;letter-spacing:.08em;margin-right:6px}
+.why{margin:0;font-size:14px;color:var(--ink2)}
+.why b{color:var(--ink);font-weight:600}
+/* notes */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.card{border:1px solid var(--line);background:var(--paper2);padding:22px 24px}
+.card h3{font-size:16px;margin:0 0 10px;letter-spacing:.02em}
+.card ul{margin:0;padding-left:18px;font-size:14px}
+.card li{margin:8px 0}
+.warn{border-left:3px solid var(--accent);background:#fff;border:1px solid var(--line);border-left-width:3px;padding:22px 24px;margin:26px 0}
+.warn h3{margin:0 0 8px;font-size:16px;color:var(--accent)}
+.warn ol{margin:6px 0 0;padding-left:20px;font-size:15px}
+.warn li{margin:9px 0}
+.meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:22px 0}
+.meta div{background:var(--paper);padding:14px 16px}
+.meta b{display:block;font:600 18px/1.2 ui-sans-serif,system-ui}
+.meta span{font-size:12px;color:var(--ink2);letter-spacing:.1em}
+footer{margin-top:38px;border-top:1px solid var(--line);padding-top:16px;font-size:13px;color:var(--ink2)}
+code{font-family:ui-monospace,SFMono-Regular,Menlo;font-size:12px;background:var(--paper2);padding:2px 6px;border-radius:3px}
+@media(max-width:900px){.grid,.split{grid-template-columns:1fr}.meta{grid-template-columns:1fr 1fr}h1{font-size:28px}.wrap{padding:34px 18px 60px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">Storyboard · 8 shots · look test</div>
+  <h1>《于是》— 分镜与风格试验
+    <small>油画厚涂 · 郑润泽《于是》3:52.83 · 这些帧由绘制代码渲染（早期的 look test，人物动画是之后才加进代码的）。</small>
+  </h1>
+
+  <div class="meta">
+    <div><b>8</b><span>镜头 / 不切碎</span></div>
+    <div><b>78.4 s</b><span>灰→彩起扫</span></div>
+    <div><b>1920×1080</b><span>24 fps</span></div>
+    <div><b>−14 LUFS</b><span>原音频不重配</span></div>
+  </div>
+
+  <p class="lede">整片只讲一件事：<b>颜色走了，又回来一部分</b>。开场是一幅几乎全灰的画，只有窗外那盏路灯是暖的；副歌第一句，刮刀从她站的地方开始把整座广场重新刷上色；桥段颜色退回去，镜子裂开；尾声同一扇窗，雨停了、天亮了，画是暖的——但房间里已经没有她。</p>
+
+  <div class="rule"></div>
+  <h2><span class="n">01</span>八个镜头</h2>
+
+  <div class="grid">
+
+    <div class="shot">
+      <img src="storyboard/t_8.jpg" alt="镜头 1 雨窗">
+      <div class="cap">
+        <div class="row"><span class="no">S1</span><span class="tc">00:00 – 00:14</span><span class="framing">ECU · 极慢推</span></div>
+        <p class="lyric"><span>前奏</span>整幅画被一笔一笔画出来，第一滴雨落下</p>
+        <p class="why">钩子在前 3 秒：不是先出片名，而是<b>世界自己被画出来</b>。窗框压得比墙深，让灰调里也有三个明度层次；路灯是画面里唯一的暖色。</p>
+      </div>
+    </div>
+
+    <div class="shot">
+      <img src="storyboard/t_26.jpg" alt="镜头 2 空房间">
+      <div class="cap">
+        <div class="row"><span class="no">S2</span><span class="tc">00:14 – 00:41</span><span class="framing">全景 · 横移+轻推</span></div>
+        <p class="lyric"><span>00:28</span>昨晚想到你 被寂寞包裹的恐惧</p>
+        <p class="why">一个镜头不切，让观众自己找细节：<b>床上的凹陷、椅背上的外套、床边那双鞋</b>。人不出现，但处处是她。</p>
+      </div>
+    </div>
+
+    <div class="shot">
+      <img src="storyboard/t_55.jpg" alt="镜头 3 玻璃与星">
+      <div class="cap">
+        <div class="row"><span class="no">S3</span><span class="tc">00:41 – 01:10</span><span class="framing">MCU · 推近+上移</span></div>
+        <p class="lyric"><span>00:41</span>能不能留下来再陪我数次星星</p>
+        <p class="why">这一段的 native move：<b>雨点停在玻璃上的地方，变成星</b>。越唱越多，最多的一刻在 55 秒。</p>
+      </div>
+    </div>
+
+    <div class="shot">
+      <img src="storyboard/t_80.jpg" alt="镜头 4 灰广场（彩扫前）">
+      <div class="cap">
+        <div class="row"><span class="no">S4a</span><span class="tc">01:10 – 01:18</span><span class="framing">全景 · 微推</span></div>
+        <p class="lyric"><span>01:10</span>忘不了你我互相的甜蜜</p>
+        <p class="why">副歌进来先把世界压住：<b>全灰，红伞也变灰</b>。只有等刮刀来，颜色才存在。</p>
+      </div>
+    </div>
+
+    <div class="shot">
+      <img src="storyboard/t_92.jpg" alt="镜头 4 广场（彩扫后）">
+      <div class="cap">
+        <div class="row"><span class="no">S4b</span><span class="tc">01:18 – 01:52</span><span class="framing">同机位 · 一镜到底</span></div>
+        <p class="lyric"><span>01:32</span>是你给我的最后的记忆</p>
+        <p class="why"><b>全片的 signature shot</b>：从她脚下开始，2.6 秒内整幅画被重新上一层色。同一个镜头，颜色是"事件"而不是滤镜——这是这个媒介只有它能做的事。</p>
+      </div>
+    </div>
+
+    <div class="shot">
+      <img src="storyboard/t_120.jpg" alt="镜头 5 双镜">
+      <div class="cap">
+        <div class="row"><span class="no">S5</span><span class="tc">01:52 – 02:12</span><span class="framing">双镜中景 · 推近</span></div>
+        <p class="lyric"><span>01:57</span>镜子两面我破碎又织起</p>
+        <p class="why">裂缝从上往下走，碎块反光。<b>颜色在这里退回去</b>——镜像里的事，颜色管不了。</p>
+      </div>
+    </div>
+
+    <div class="shot">
+      <img src="storyboard/t_160.jpg" alt="镜头 6 彩色广场拉远">
+      <div class="cap">
+        <div class="row"><span class="no">S6</span><span class="tc">02:12 – 03:04</span><span class="framing">全景 · 缓慢拉远</span></div>
+        <p class="lyric"><span>02:40</span>说来又说去还放不下你</p>
+        <p class="why">全片唯一一次"减速"：镜头一直往后退，人越来越小。<b>颜色留住了几秒，然后你留不住</b>。</p>
+      </div>
+    </div>
+
+    <div class="shot">
+      <img src="storyboard/t_216.jpg" alt="镜头 8 黎明窗">
+      <div class="cap">
+        <div class="row"><span class="no">S8</span><span class="tc">03:24 – 03:52</span><span class="framing">同机位 · 拉远</span></div>
+        <p class="lyric"><span>03:24</span>最后我会承认无法改变结局</p>
+        <p class="why">和开场同一机位、同一构图：灰→暖、雨→停、窗台多一只鸟。<b>颜色回来了，人没回来。</b></p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rule"></div>
+  <h2><span class="n">02</span>我看得最没把握的三处</h2>
+
+  <div class="split">
+    <div class="card">
+      <h3>还差的活（正式渲染前会补）</h3>
+      <ul>
+        <li><b>房间的明度</b>：床上用品的几个层次还挤在一起，要再分一次值。</li>
+        <li><b>镜子里的人脸</b>：全片唯一的近景人脸，现在偏"面具"。要先把设定帧定死再进分镜。</li>
+        <li><b>片头标题</b>：《于是》两个字要刮刀写进玻璃、再被雨冲掉，这一段还没做。</li>
+        <li><b>拍点</b>：70 BPM 是从歌词行距估的，开拍前用音频测一次真实拍点，把 cue 锁到 0 ms。</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>已经定下来的</h3>
+      <ul>
+        <li>原音频<b>不重配</b>，只加极轻的拟音贴片（压在原曲 −18 dB 以下）。</li>
+        <li>8 刀，只在段落边界切；段落内一镜到底。</li>
+        <li>中文字幕烧进画面，另出 <code>.srt</code>；不加署名卡、不加水印。</li>
+        <li>分段出片、逐段验收：先 0–70 s，再 70–132 s，最后 132–232 s。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="warn">
+    <h3>要你点头的三件事（然后我就开跑）</h3>
+    <ol>
+      <li><b>这个"灰→彩"的方向对不对？</b>它是全片的核心，定了就不好改。</li>
+      <li><b>3:52 全片还是先做 70 秒？</b>我建议先出 <b>0–70 s</b> 的完整段落（含片头、雨窗、房间、彩扫起手），你看完再决定要不要一次跑完。</li>
+      <li><b>房间里要不要出现人？</b>现在的方案是"人不出现，只留痕迹"（鞋、外套、床上的凹陷）。如果你想看到他坐在床边，我要改 S2。</li>
+    </ol>
+  </div>
+
+  <footer>
+    工程：<code>mv-yushi/</code>（<code>index.html</code> + <code>film.js</code> + <code>scenes/plates.js</code>，直接复用库里的刮刀引擎 <code>engine/impasto.js</code>）· 导演文档：<code>mv-yushi/TREATMENT.md</code> · 这些静帧由 <code>core/render/still.mjs</code> 渲染，任何一帧都可单独重跑。
+  </footer>
+
+</div>
+</body>
+</html>

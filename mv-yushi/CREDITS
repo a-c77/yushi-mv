@@ -1,0 +1,28 @@
+# CREDITS — 《于是》音乐视频
+
+## 用户的素材（作品归用户，无需署名）
+
+- **音乐**：《于是》— 郑润泽（演唱/制作），作词 郑润泽，作曲 JD_Kwan / 郑润泽。
+  文件由用户提供（`mv-assets/…mp3`），本片**不重配、不改编**，原样作为音轨。
+- **歌词**：同上，用户提供的 `.lrc`，用于烧录字幕与 `.srt`。
+  本片为个人使用；如果要公开发布，音乐与歌词的版权需要用户自行取得授权。
+
+## 风格库
+
+- **Lemo-Opuscar** — 风格库与刮刀绘制引擎 `engine/impasto.js`、`engine/plate.js`
+  （github.com/lemomo-ai/lemo-opuscar，代码 MIT · CC BY 4.0 样片素材）。
+  本片只用了它的引擎与《油画厚涂 Impasto Oil Painting》的风格规则，没有使用任何样片的画面、构图或故事。
+- 渲染管线：`core/render/*`（同库，MIT）。
+
+## 字体
+
+- 字幕与画面文字使用**系统字体**（macOS 自带 Songti SC / STSong），未内嵌、未分发字体文件。
+
+## 声音
+
+- 音轨即用户提供的成品混音，未加入合成配乐。
+- 未使用任何采样库。
+
+## 工具
+
+- 渲染：headless Chromium + WebGL2；编码：FFmpeg 8.0（LGPL/GPL 构建，本机安装）。

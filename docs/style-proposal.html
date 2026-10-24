@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>《于是》MV — 风格提案</title>
+<style>
+:root{
+  --paper:#faf7f2; --paper2:#f3ede3; --ink:#1f1c18; --ink2:#5b5348;
+  --line:#e2d8c8; --accent:#b4472c; --gold:#a8802f;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Songti SC","Source Han Serif SC","Noto Serif SC",Georgia,serif;
+  line-height:1.75; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:56px 36px 90px}
+.eyebrow{font:600 12px/1.4 ui-sans-serif,system-ui;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+h1{font-size:40px;line-height:1.25;margin:14px 0 6px;letter-spacing:.01em}
+h1 small{display:block;font-size:15px;font-weight:400;color:var(--ink2);letter-spacing:.06em;margin-top:12px}
+.rule{height:1px;background:var(--line);margin:34px 0}
+h2{font-size:22px;margin:0 0 14px;letter-spacing:.02em}
+h2 .n{color:var(--accent);font-size:14px;margin-right:10px;font-family:ui-sans-serif,system-ui}
+
+/* 歌曲分析 */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.fact{background:var(--paper);padding:16px 18px}
+.fact b{display:block;font-size:19px;font-family:ui-sans-serif,system-ui;letter-spacing:.02em}
+.fact span{font-size:12px;color:var(--ink2);letter-spacing:.1em}
+.mood{background:var(--paper2);padding:22px 24px;border-left:3px solid var(--accent);margin:22px 0}
+.mood p{margin:0 0 10px}
+.mood p:last-child{margin:0}
+.motifs{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.motif{font-size:13px;padding:5px 12px;border:1px solid var(--line);background:var(--paper);border-radius:999px;color:var(--ink2)}
+
+/* 方案卡 */
+.plan{border:1px solid var(--line);background:#fff;margin:26px 0;overflow:hidden}
+.plan .top{display:grid;grid-template-columns:400px 1fr;gap:0}
+.plan img{width:100%;height:100%;object-fit:cover;display:block;background:#111}
+.plan .body{padding:26px 28px}
+.plan .meta{font:600 12px/1.4 ui-sans-serif,system-ui;letter-spacing:.16em;color:var(--gold);text-transform:uppercase}
+.plan h3{font-size:26px;margin:8px 0 2px}
+.plan h3 em{font-style:normal;font-size:15px;color:var(--ink2);font-weight:400;margin-left:10px;font-family:ui-sans-serif,system-ui}
+.plan .tag{font-size:14px;color:var(--accent);margin:2px 0 16px}
+.plan ul{margin:0;padding-left:18px;font-size:15px}
+.plan li{margin:9px 0}
+.plan li b{font-weight:600}
+.plan li i{font-style:normal;color:var(--ink2);font-size:13px;font-family:ui-sans-serif,system-ui}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;padding-top:18px;border-top:1px dashed var(--line)}
+.links a{font:500 13px/1 ui-sans-serif,system-ui;color:var(--ink);text-decoration:none;border:1px solid var(--line);padding:9px 14px;border-radius:3px;background:var(--paper)}
+.links a:hover{border-color:var(--accent);color:var(--accent)}
+.links a.pri{background:var(--ink);color:#fff;border-color:var(--ink)}
+.links a.pri:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* 表格 */
+table{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 12px/1.4 ui-sans-serif,system-ui;letter-spacing:.12em;color:var(--ink2);text-transform:uppercase;background:var(--paper2)}
+td:first-child{width:130px;color:var(--ink2);font-family:ui-sans-serif,system-ui;font-size:13px}
+td.win{color:var(--accent);font-weight:600}
+
+/* 推荐 */
+.pick{background:var(--ink);color:#f7f3ec;padding:34px 36px;margin:34px 0}
+.pick h2{color:#fff}
+.pick b{color:#f0b429}
+.pick p{margin:0 0 12px}
+.pick p:last-child{margin:0}
+.pick code{background:rgba(255,255,255,.12);padding:2px 7px;border-radius:3px;font-size:13px}
+
+/* 下一步 */
+.next{border:1px solid var(--line);background:var(--paper2);padding:26px 30px}
+.next ol{margin:10px 0 0;padding-left:22px}
+.next li{margin:12px 0}
+.note{font-size:13px;color:var(--ink2)}
+footer{margin-top:40px;font-size:13px;color:var(--ink2);border-top:1px solid var(--line);padding-top:18px}
+@media (max-width:860px){
+  .plan .top{grid-template-columns:1fr}
+  .facts{grid-template-columns:repeat(2,1fr)}
+  h1{font-size:30px}
+  .wrap{padding:36px 20px 60px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">Style Proposal · Music Video</div>
+  <h1>《于是》— 郑润泽
+    <small>素材已读：原音频 3:52.83 / 48kHz 立体声 / LRC 逐句歌词。下面是三种风格方案，等你选定后我用完整原音频开工。</small>
+  </h1>
+
+  <div class="rule"></div>
+
+  <h2><span class="n">01</span>这首歌是什么样子</h2>
+  <div class="facts">
+    <div class="fact"><b>03:52</b><span>总长</span></div>
+    <div class="fact"><b>−26.4</b><span>整体响度 LUFS</span></div>
+    <div class="fact"><b>9.0 LU</b><span>动态范围</span></div>
+    <div class="fact"><b>慢速</b><span>主歌留白、副歌撑开</span></div>
+  </div>
+
+  <div class="mood">
+    <p><b>情绪走向：</b>不是撕心裂肺的那种分手歌，是"还在原地等"的那种。前段几乎是独白（房间、雨、窗、冷清），中段开始反复求（<em>能不能…</em>），副歌才把话说完整（<em>忘不了你我互相的甜蜜 / 松开的手再抓不紧</em>），尾声收在一句认命——<em>最后我会承认无法改变结局</em>。</p>
+    <p><b>视觉意象：</b>雨、窗玻璃、空房间、星星、泥泞的路、镜子（<em>镜子两面我破碎又织起</em>）、乌云、错过的时间。</p>
+    <p class="note" style="margin-top:12px">情绪关键词</p>
+    <div class="motifs">
+      <span class="motif">清冷</span><span class="motif">克制</span><span class="motif">等待</span>
+      <span class="motif">潮湿</span><span class="motif">回忆反复</span><span class="motif">认命</span>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <h2><span class="n">02</span>三个方案</h2>
+
+  <!-- 方案一 -->
+  <div class="plan">
+    <div class="top">
+      <img src="lemo-opuscar/styleboard/img/impasto_0.jpg" alt="油画厚涂 样片画面">
+      <div class="body">
+        <div class="meta">方案 A · 手绘与绘画</div>
+        <h3>油画厚涂 <em>Impasto Oil Painting</em></h3>
+        <p class="tag">「灰的世界里，第一把红伞撑开」—— 颜色本身就是剧情</p>
+        <ul>
+          <li><b>开场：</b>只有雨打窗的灰调刮刀笔触，房间是几块冷灰平面，镜头不动，<i>光在墙上走</i>——对应"房间里依然很冷清"。</li>
+          <li><b>副歌：</b>整幅画从灰重新"上一遍色"（这是这个媒介的原生能力，不是滤镜），红伞／一件红毛衣成为画面里唯一的纯色——对应"忘不了你我互相的甜蜜"。</li>
+          <li><b>"镜子两面我破碎又织起"：</b>湿反射用短促水平刀痕堆出，人像碎成色块，再被刮刀一笔笔拼回。</li>
+          <li><b>"等雨后等天晴"：</b>同一个构图重画一次，天光从钴蓝推到金。</li>
+          <li><b>剪辑：</b>音乐锁拍——一个动作、一个声音、一刀，鼓点落点上换画。</li>
+        </ul>
+        <div class="links">
+          <a class="pri" href="http://127.0.0.1:8765/styles/impasto/STYLE.md" target="_blank">风格说明 STYLE.md</a>
+          <a href="https://github.com/lemomo-ai/lemo-opuscar/releases/download/films/impasto.mp4" target="_blank">下载样片 40 秒</a>
+          <a href="https://lemomo-ai.github.io/lemo-opuscar/#hand-drawn-painting" target="_blank">在线画廊</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 方案二 -->
+  <div class="plan">
+    <div class="top">
+      <img src="lemo-opuscar/styleboard/img/cel-anime-80s_0.jpg" alt="80 年代赛璐璐动画 样片画面">
+      <div class="body">
+        <div class="meta">方案 B · 卡通与动画</div>
+        <h3>80 年代赛璐璐动画 <em>80s Cel Anime</em></h3>
+        <p class="tag">「雨后霓虹城市里，一次没能赶上的见面」—— 有人物、有故事</p>
+        <ul>
+          <li><b>设定：</b>1987 年的雨夜城市，一个主角（先出角色设定张，定脸型、发色和只属于她的一个强调色）。</li>
+          <li><b>"渐渐两路模糊我视线"：</b>背景是柔和空气刷夜景 + 湿地面倒影，人物是平涂赛璐璐，逆光霓虹从背后透出来。</li>
+          <li><b>"于是我们又错过了时间"：</b>车站、电话亭、末班车——用具体的情节把"错过"演出来，而不是靠字幕解释。</li>
+          <li><b>"松开的手再抓不紧"：</b>手部特写 + 逆光剪影，二格作画（12fps），情绪在眉毛和眼睑上。</li>
+          <li><b>质感：</b>整片做旧成录像带 + CRT 电视（扫描线、色度溢出、荧光辉光），字幕像当年贴在画面上的那种。</li>
+        </ul>
+        <div class="links">
+          <a class="pri" href="http://127.0.0.1:8765/styles/cel-anime-80s/STYLE.md" target="_blank">风格说明 STYLE.md</a>
+          <a href="https://github.com/lemomo-ai/lemo-opuscar/releases/download/films/cel-anime-80s.mp4" target="_blank">下载样片 59 秒</a>
+          <a href="https://lemomo-ai.github.io/lemo-opuscar/#cartoon-anime" target="_blank">在线画廊</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 方案三 -->
+  <div class="plan">
+    <div class="top">
+      <img src="lemo-opuscar/styleboard/img/watercolor_0.jpg" alt="水彩笔刷 样片画面">
+      <div class="body">
+        <div class="meta">方案 C · 手绘与绘画</div>
+        <h3>水彩笔刷 <em>Watercolor Brush</em></h3>
+        <p class="tag">「一页会自己画出来的私人手帐」—— 最轻、最私密</p>
+        <ul>
+          <li><b>底子：</b>一张暖棉纸，纸的白就是光；所有东西都是一笔一笔"长"出来的，没有一根矢量线。</li>
+          <li><b>"窗外下着雨"：</b>淡蓝灰晕染，飞白当雨丝，纸色雾把远处的回忆洗淡。</li>
+          <li><b>"能不能留下来再陪我数次星星"：</b>旁边用钢笔手写体批注，像日记页，字是随画面一起写出来的。</li>
+          <li><b>"一起走的路都泥泞"：</b>地面靠反复叠色加深（透明水彩越叠越暗），不是换一支深色颜料。</li>
+          <li><b>转场：</b>雾把画面"洗掉"，用来表现记忆消退；一个朱红色只留给反复出现的那件东西（伞 / 车票）。</li>
+        </ul>
+        <div class="links">
+          <a class="pri" href="http://127.0.0.1:8765/styles/watercolor/STYLE.md" target="_blank">风格说明 STYLE.md</a>
+          <a href="https://github.com/lemomo-ai/lemo-opuscar/releases/download/films/watercolor.mp4" target="_blank">下载样片 114 秒</a>
+          <a href="https://lemomo-ai.github.io/lemo-opuscar/#hand-drawn-painting" target="_blank">在线画廊</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <h2><span class="n">03</span>差别在哪</h2>
+  <table>
+    <thead>
+      <tr><th>对比项</th><th>油画厚涂</th><th>80 年代赛璐璐</th><th>水彩笔刷</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>情绪浓度</td><td class="win">最重，颜色当事件用</td><td>外放，靠人物表演</td><td>最轻，克制的淡</td></tr>
+      <tr><td>叙事性</td><td>弱—中，靠意象和色彩弧</td><td class="win">最强，有角色有情节</td><td>弱，像日记独白</td></tr>
+      <tr><td>有没有"人"</td><td>有，但更像剪影／色块</td><td class="win">有完整角色，需要设定张</td><td>几乎没有人，靠字与景</td></tr>
+      <tr><td>和"雨"的契合</td><td class="win">天生一对（湿反射＋灰调）</td><td>强（雨夜霓虹）</td><td>中（雨是晕染，不是雨点）</td></tr>
+      <tr><td>转场语言</td><td>刮刀刷过、硬切在拍上</td><td>场景硬切、录像带跳帧</td><td>雾洗、笔锋擦除</td></tr>
+      <tr><td>3:52 长片的耐力</td><td class="win">好，同一世界可无限重画</td><td>一般，场景多了要重复建模</td><td>一般，长时间容易显得平</td></tr>
+      <tr><td>制作风险</td><td>中</td><td class="win" style="color:var(--ink2);font-weight:400">偏高（角色一致性最难）</td><td>低</td></tr>
+    </tbody>
+  </table>
+
+  <div class="pick">
+    <h2>我的推荐：方案 A「油画厚涂」</h2>
+    <p>三个理由。第一，这首歌最核心的画面就是<b>雨</b>和<b>灰色</b>，而这个风格里"湿地面＝一堆短促水平刀痕"、"灰版世界＋一个纯色例外"是写进规则的原生能力，不是硬套。第二，副歌需要一次视觉上的<b>事件</b>（不只是更亮的画面），"整幅画从灰重新上色"正好对应"忘不了你我互相的甜蜜"——颜色回来了，人没回来。第三，它自带<b>音乐锁拍</b>的剪辑语法，3 分 52 秒这种长、有明确节拍起伏的歌，最怕的是中段塌掉。</p>
+    <p>如果你更想要"看完记住一个故事、一个人"——选 <b>B</b>。如果你想要"像翻一页别人的日记"、安静到几乎不动——选 <b>C</b>。</p>
+  </div>
+
+  <h2><span class="n">04</span>你定了之后我怎么做</h2>
+  <div class="next">
+    <ol>
+      <li><b>确认风格</b>（A / B / C，或者说"我想要 A 但改成…"也可以改风格）。</li>
+      <li><b>确认时长</b>：完整 3:52，还是剪一个 60–90 秒的版本？整首 1080p/24fps 约 5,590 帧，渲染和检查都要时间；如果你要完整版，我会分成几个段落来做、逐段给你看。</li>
+      <li><b>确认字幕</b>：默认把 LRC 烧进画面（中文），要不要双语 / 要不要手写体？</li>
+      <li>我先出<b>分镜故事板</b>：用真实风格画 8–12 个关键镜头给你看，你点头我再跑全片。</li>
+      <li>出片：1920×1080 / 24fps / 混音到 −14 LUFS，给你<b>可播放预览</b>并导出 MP4。</li>
+    </ol>
+  </div>
+
+  <footer>
+    素材位置：<code style="font-family:ui-monospace;font-size:12px">mv-assets/</code>（原音频 + LRC 已解出，中文名正常）· 风格库：lemo-opuscar（51 种）· 本地画廊 http://127.0.0.1:8765/styleboard/index.html
+  </footer>
+
+</div>
+</body>
+</html>

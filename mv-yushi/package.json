@@ -1,0 +1,18 @@
+{
+  "name": "mv-yushi",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "description": "《于是》音乐视频 — 油画厚涂，全部由代码逐帧绘制",
+  "scripts": {
+    "still": "node ../lemo-opuscar/core/render/still.mjs . 30 --out ./stills",
+    "events": "node ../lemo-opuscar/core/render/events.mjs .",
+    "video": "node ../lemo-opuscar/core/render/video.mjs . --fps 24 --workers 2 --out ./out/video.mp4",
+    "srt": "../lemo-opuscar/.venv/bin/python ../lemo-opuscar/core/render/srt.py cues.json 于是.srt"
+  },
+  "dependencies": {
+    "playwright-core": "^1.63.0",
+    "three": "^0.170.0"
+  },
+  "engines": { "node": ">=20" }
+}
